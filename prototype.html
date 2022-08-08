@@ -28,18 +28,19 @@
       };
     }
 
-    Person.prototype.live = true;
+    // Person.prototype.live = true;
 
-    Person.prototype = new Base();
+    // Person.prototype = new Base();
     console.log("person: ", Person);
     console.log("person proto: ", Person.prototype);
     console.log("object proto: ", Object.prototype);
+    console.log(Person.prototype.__proto__ === Object.prototype);
 
     const minsu = new Person("민수");
     minsu.introduce();
     console.log("minsu: ", minsu);
     const neee = minsu.constructor();
-    console.log("minsu constructor", minsu.constructor === Person); // true
+    // console.log("minsu constructor", minsu.constructor === Person); // true
     console.log("minsu proto: ", minsu.__proto__);
     console.log(minsu.live);
 
@@ -58,6 +59,21 @@
     minho.name = "민호";
     minho.introduce();
     console.log("minho2: ", minho);
-    // console.log("minho proto2: ", minho.__proto__);
+    console.log("minho proto2: ", minho.__proto__);
+
+    class Car {
+      constructor(color) {
+        this.color = color;
+      }
+    }
+
+    Car.prototype = new Base();
+    console.log("car proto1: ", Car.prototype);
+
+    // console.log("car proto2: ", Car.prototype);
+
+    const k5 = new Car("blue");
+    console.log("k5: ", k5);
+    console.log("k5 proto: ", k5.__proto__);
   </script>
 </html>
